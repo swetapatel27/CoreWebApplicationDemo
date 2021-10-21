@@ -9,9 +9,10 @@ namespace CoreWebApplication1.Controllers
 {
     public class StudentController : Controller
     {
-        StudentModel obj = new StudentModel();
+        StudentModel obj;
         public IActionResult Index()
         {
+            obj = new StudentModel();
             List<StudentModel> stud = obj.getData();
 
 
@@ -27,7 +28,7 @@ namespace CoreWebApplication1.Controllers
         [HttpPost]
         public IActionResult AddStudent(StudentModel stud)
         {
-            StudentModel obj = new StudentModel();
+            obj = new StudentModel();
 
             if (ModelState.IsValid)
             {
