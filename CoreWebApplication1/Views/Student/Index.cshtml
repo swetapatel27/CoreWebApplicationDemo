@@ -1,0 +1,68 @@
+﻿@using CoreWebApplication1.Models
+@model IEnumerable<StudentModel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Student Page";
+}
+
+<div>
+    <h1 style="text-align:center;">Student Pages</h1>
+    <hr />
+    <table class="table table-bordered table-dark table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Semester</th>
+        </tr>
+        @foreach (StudentModel item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email.</td>
+                <td>@item.Age</td>
+                <td>@item.Sem</td>
+            </tr>
+        }
+    </table>
+
+    @*@{ var name = "abc";}
+        <h3>@name</h3>
+
+        <hr />
+
+        @{
+            var dob = DateTime.Now.ToShortDateString();
+            var pob = "Rajkot";
+
+            var sent = "Your date of birth is " + dob + " your Place of birth is:" + pob;
+        }
+
+        <p>@sent</p>
+
+        <h4>Date of Birth: @dob</h4><br />
+        <h4>Place of Birth: @pob</h4>
+
+        <hr />
+
+        @{
+
+            var greeting = "";
+            var hour = DateTime.Now.Hour;
+
+            if (hour > 12)
+            {
+                greeting = "good Afternoon ";
+            }
+            else
+            {
+                greeting = "goof morning";
+            }
+        }
+
+
+        <h1>@greeting</h1>*@
+
+</div>
