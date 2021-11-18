@@ -10,9 +10,15 @@ namespace CoreWebApplication1.Controllers
 {
     public class EmployeeController : Controller
     {
+        EmployeeModel empObj = new EmployeeModel();
+
         public IActionResult Index()
         {
-            return View();
+            empObj = new EmployeeModel();
+            List<EmployeeModel> lst = empObj.getData();
+
+
+            return View(lst);
         }
 
         public IActionResult AddEmployee()
@@ -23,17 +29,30 @@ namespace CoreWebApplication1.Controllers
         [HttpPost]
         public IActionResult AddEmployee(EmployeeModel emp)
         {
+            bool res;
             if (ModelState.IsValid)
             {
-                RedirectToAction("Index");
-                return View();
+                empObj = new EmployeeModel();
+                res = empObj.AddEmp(emp);
+                if (res)
+                {
+                    TempData["msg"] = "Added successfully";
+                }
             }
             else
             {
-                return View();
+                TempData["msg"] = "Not Added. something went wrong..!!";
             }
 
+            return View();
+        }
 
+        [HttpGet]
+        public IActionResult EditEmployee(string id)
+        {
+            EmployeeModel emp = empObj.getData(id);
+
+            return View(emp);
         }
     }
 }

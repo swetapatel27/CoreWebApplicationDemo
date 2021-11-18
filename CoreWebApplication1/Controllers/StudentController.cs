@@ -9,7 +9,7 @@ namespace CoreWebApplication1.Controllers
 {
     public class StudentController : Controller
     {
-        StudentModel obj;
+        StudentModel obj = new StudentModel();
         public IActionResult Index()
         {
             obj = new StudentModel();
@@ -54,5 +54,14 @@ namespace CoreWebApplication1.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult EditStudent(string Id)
+        {
+            StudentModel stud = obj.getStud(Id);
+
+            return View(stud);
+        }
+
     }
 }

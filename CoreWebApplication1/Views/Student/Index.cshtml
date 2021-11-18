@@ -12,18 +12,25 @@
     <hr />
     <table class="table table-bordered table-dark table-hover">
         <tr>
+            <th>Id</th>
             <th>Name</th>
             <th>Email</th>
             <th>Age</th>
             <th>Semester</th>
+            <th>Actions</th>
         </tr>
         @foreach (StudentModel item in Model)
         {
             <tr>
+                <td>@item.Id</td>
                 <td>@item.Name</td>
                 <td>@item.Email.</td>
                 <td>@item.Age</td>
                 <td>@item.Sem</td>
+                <td>
+                    <a asp-action="EditStudent" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="DeleteStudent" asp-route-id="@item.Id">Delete</a>
+                </td>
             </tr>
         }
     </table>
