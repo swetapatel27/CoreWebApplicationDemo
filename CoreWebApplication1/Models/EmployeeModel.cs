@@ -83,6 +83,26 @@ namespace CoreWebApplication1.Models
         }
 
 
+        public bool update(EmployeeModel Emp)
+        {
+
+            SqlCommand cmd = new SqlCommand("update tbl_emp set Name=@name, Dept=@dept, Salary=@salary where Id = @id", con);
+            cmd.Parameters.AddWithValue("@name", Emp.Name);
+            cmd.Parameters.AddWithValue("@dept", Emp.Department);
+            cmd.Parameters.AddWithValue("@salary", Emp.Salary);
+            cmd.Parameters.AddWithValue("@id", Emp.Id);
+            con.Open();
+            int i = cmd.ExecuteNonQuery();
+            if (i >= 1)
+            {
+                return true;
+            }
+
+
+            return false;
+        }
+
+
         //[Required(ErrorMessage = "Please enter Name")]
         //[Display(Name = "Enter Name:")]
         //public string Name { get; set; }

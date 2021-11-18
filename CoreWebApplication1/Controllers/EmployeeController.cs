@@ -54,5 +54,26 @@ namespace CoreWebApplication1.Controllers
 
             return View(emp);
         }
+
+        [HttpPost]
+        public IActionResult EditEmployee(EmployeeModel emp)
+        {
+            bool res;
+            if (ModelState.IsValid)
+            {
+                empObj = new EmployeeModel();
+                res = empObj.update(emp);
+                if (res)
+                {
+                    TempData["msg"] = "Updated successfully";
+                }
+            }
+            else
+            {
+                TempData["msg"] = "Not Updated. something went wrong..!!";
+            }
+
+            return View();
+        }
     }
 }

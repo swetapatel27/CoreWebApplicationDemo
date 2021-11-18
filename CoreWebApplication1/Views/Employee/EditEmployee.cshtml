@@ -14,7 +14,7 @@
     </div>
 
     <div class="card-body">
-        <form asp-action="Edit" asp-controller="Employee" method="post">
+        <form asp-action="EditEmployee" asp-controller="Employee" method="post">
 
             <input type="hidden" asp-for="Id" />
 
@@ -53,5 +53,12 @@
             </div>
 
         </form>
+        @if (TempData["msg"] != null)
+        {
+            <script>
+        alert('@TempData["msg"].ToString();');
+        window.location.href = "@Url.Action("Index","Employee")";
+            </script>
+        }
     </div>
 </div>
